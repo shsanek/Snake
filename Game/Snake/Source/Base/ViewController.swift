@@ -25,7 +25,7 @@ class ViewController: NSViewController, IPlayer
     @IBOutlet private var gameContainerView: SKView!
     @IBOutlet private var watingView: NSView!
     @IBOutlet private var willStartView: NSView!
-    @IBOutlet private var mainView: MainMenuView!
+    @IBOutlet private var mainView: TableViewController!
     @IBOutlet private var endGameView: NSView!
 
     private lazy var gameViewController = GameStateViewController(view: self.gameContainerView)
@@ -71,6 +71,7 @@ class ViewController: NSViewController, IPlayer
     {
         self.state = .endGameView
         self.endGameViewController.setEndGame(endGame)
+		self.mainMenuViewController.setEndGame(endGame)
     }
 
     func showWating()
