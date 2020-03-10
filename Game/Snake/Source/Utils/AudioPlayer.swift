@@ -13,22 +13,34 @@ public final class AudioPlayer
 {
     public enum AudioFile
     {
-        case clock
-        case vizg
-        case final
-        case toasty
+        case action
+        case death01
+        case death02
+        case eat01
+        case eat02
+        case eat03
+        case gameover
+        case startorend01
         
         var rawValue: (file: String, ext: String) {
             get {
                 switch self {
-                case .clock:
-                    return ("zvukovoy-effekt-clock-fx",".mp3")
-                case .vizg:
-                    return ("vizg",".m4a")
-                case .final:
-                    return ("z_uki-pobeda-2", ".m4a")
-                case .toasty:
-                    return ("toasty_sound", ".mp3")
+                case .action:
+                return ("action",".wav")
+                case .death01:
+                return ("death01",".wav")
+                case .death02:
+                return ("death02",".wav")
+                case .eat01:
+                return ("eat01",".wav")
+                case .eat02:
+                return ("eat02",".wav")
+                case .eat03:
+                return ("eat03",".wav")
+                case .gameover:
+                return ("gameover",".wav")
+                case .startorend01:
+                return ("start-or-end01",".wav")
                 }
             }
         }
