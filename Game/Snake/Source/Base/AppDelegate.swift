@@ -19,8 +19,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification)
     {
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let windowPlayer1 = storyboard.instantiateInitialController()! as! NSWindowController
-        let windowPlayer2 = storyboard.instantiateInitialController()! as! NSWindowController
+
+
+		let windowPlayer1:NSWindowController = storyboard.instantiateController(withIdentifier: "GameWindow") as! NSWindowController
+		let windowPlayer2:NSWindowController = storyboard.instantiateController(withIdentifier: "GameWindow") as! NSWindowController
+		
         self.retains.append(windowPlayer1)
         self.retains.append(windowPlayer2)
         windowPlayer1.showWindow(self)

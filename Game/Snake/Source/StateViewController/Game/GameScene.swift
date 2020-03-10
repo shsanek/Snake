@@ -38,8 +38,6 @@ class GameScene: SKScene
         
         if let spinnyNode = self.spinnyNode {
             spinnyNode.lineWidth = 2.5
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.removeFromParent()]))
         }
     }
 
@@ -99,30 +97,79 @@ class GameScene: SKScene
         print("\(currentTime)")
     }
 
+
+    internal var lazyNodeContainer: [LazyNodeContainer] = []
+    internal var newLazyContainers: [LazyNodeContainer] = []
+
+    func beginUpdate()
+    {
+        self.newLazyContainers = []
+    }
+
+    func addNodeIfNeeded(identifier: String, position: CGPoint, nodeMaker: () -> SKShapeNode)
+    {
+        guard let index = self.lazyNodeContainer.firstIndex(where: { $0.identifier == identifier }) else
+        {
+            let node = nodeMaker()
+            self.addChild(node)
+            node.position = position
+            self.newLazyContainers.append(LazyNodeContainer(identifier: identifier, node: node))
+            return
+        }
+        let container = self.lazyNodeContainer[index]
+        container.node.position = position
+        self.lazyNodeContainer.remove(at: index)
+        self.newLazyContainers.append(container)
+    }
+
+    func endUpdate()
+    {
+        for container in self.lazyNodeContainer
+        {
+            container.node.removeFromParent()
+        }
+        self.lazyNodeContainer = self.newLazyContainers
+    }
+
     func showGame(_ state: GameState)
     {
         print("рисуем состояние")
         let config = GameConfig.demo()
         self.snakeView.show(gameState: state)
+        self.beginUpdate()
         for object in state.objects
         {
-            if let n = self.spinnyNode?.copy() as? SKShapeNode {
-                n.position = CGPoint(x: self.size.width / CGFloat(config.size.width) * CGFloat(object.position.x),
-                                     y: self.size.height / CGFloat(config.size.height) * CGFloat(object.position.y))
-                switch object.identifier
-                {
-                case .apple:
+            let position = CGPoint(x: self.size.width / CGFloat(config.size.width) * CGFloat(object.position.x),
+                               y: self.size.height / CGFloat(config.size.height) * CGFloat(object.position.y))
+            switch object.identifier
+            {
+            case .apple:
+                self.addNodeIfNeeded(identifier: "apple", position: position, nodeMaker: {
+                    let n = self.spinnyNode?.copy() as! SKShapeNode
                     n.fillColor = .red
-                    self.addChild(n)
-                case .trash:
+                    return n
+                })
+            case .trash:
+                self.addNodeIfNeeded(identifier: "trash", position: position, nodeMaker: {
+                    let n = self.spinnyNode?.copy() as! SKShapeNode
                     n.fillColor = .brown
-                    self.addChild(n)
-                default:
-                    break
-                }
-
+                    return n
+                })
+            default:
+                break
             }
         }
+        self.endUpdate()
+    }
+
+
+    internal struct LazyNodeContainer
+    {
+
+        internal let identifier: String
+
+        internal let node: SKShapeNode
+
     }
 
 }
@@ -209,10 +256,10 @@ internal class SnakeView
                            SKAction.rotate(toAngle: self.rotation(obj.orintation), duration: animationTime)]
             if gameState.events.contains(where: { $0 == .apple })
             {
-                let time = animationTime / Double(self.objects.count) / 2.0
-                actions.append(SKAction.sequence([SKAction.wait(forDuration: time * 2.0 / 3.0),
-                                                  SKAction.scale(by: 1.2, duration: time),
-                                                  SKAction.scale(by: 1.0, duration: time)]))
+                let time = animationTime / Double(self.objects.count) * 0.1 * Double(i)
+                actions.append(SKAction.sequence([SKAction.wait(forDuration: time),
+                                                  SKAction.scale(to: 1.2, duration: animationTime / 2.0 * 0.9),
+                                                  SKAction.scale(to: 1.0, duration: animationTime / 2.0 * 0.9)]))
             }
             if gameState.events.contains(where: { $0 == .trash })
             {
@@ -231,13 +278,12 @@ internal class SnakeView
             let obj = gameState.snake[self.objects.count]
             let body = self.makeBody()
             body.position = self.position(obj.position)
-            body.xScale = 0.1
-            body.yScale = 0.1
-            body.alpha = 0.0
+//            body.alpha = 0.0
             body.run(SKAction.sequence([
+                SKAction.scale(to: 0.1, duration: 0.0),
                 SKAction.wait(forDuration: animationTime),
-                SKAction.fadeAlpha(by: 1.0, duration: 0.0),
-                SKAction.scale(by: 1.0, duration: gameState.nextTime - animationTime)]))
+                SKAction.fadeAlpha(to: 1.0, duration: 0.0),
+                SKAction.scale(to: 1.0, duration: gameState.nextTime - animationTime)]))
             self.objects.append(body)
             self.addNewNodeHandler(body)
         }

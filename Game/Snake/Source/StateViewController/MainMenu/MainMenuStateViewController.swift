@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class MainMenuStateViewController: BaseStateViewController<MainMenuView>
+final class MainMenuStateViewController: BaseStateViewController<TableViewController>
 {
 
     var startGameHandler: ((_ commandName: String) -> Void)?
@@ -16,14 +16,24 @@ final class MainMenuStateViewController: BaseStateViewController<MainMenuView>
     override func active()
     {
         super.active()
-        self.view.startGameButtonHandler = { [weak self] in
-            self?.startGameHandler?("пидоры вперед")
+
+        self.view.configure()
+        self.view.viewWillAppear()
+
+        self.view.startHandler = { [weak self] name in
+            self?.startGameHandler?(name)
         }
     }
 
+
     func setRecords(_ records: [Record])
     {
+        self.view.showRecords(records.map {TableRecord(name: $0.name, score: $0.score)})
+    }
 
+    func setEndGame(_ endGame: EndGame)
+    {
+        self.view.doEndOfGame(points: endGame.record.score, mistakes: 0, combos: 0)
     }
 
 }
