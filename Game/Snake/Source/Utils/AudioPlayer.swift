@@ -56,7 +56,11 @@ public final class AudioPlayer
     private func playSound(file: String, ext: String, repeatly: Bool)
     {
         guard let url = Bundle.main.url(forResource: file, withExtension: ext)
-            else {return}
+            else {
+                assertionFailure("нет такого в бандле")
+                return
+
+        }
         
         do{
             player?.stop()

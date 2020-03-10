@@ -14,6 +14,14 @@
 		C7C666372408B51F0075FFC8 /* UserIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C666332408B51F0075FFC8 /* UserIDController.swift */; };
 		C7C6663B2408B56A0075FFC8 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C666382408B5690075FFC8 /* AudioPlayer.swift */; };
 		C7C6663D2408B56A0075FFC8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6663A2408B56A0075FFC8 /* Utils.swift */; };
+		C7DC50CD2417E18900EACAE8 /* action.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50C52417E18900EACAE8 /* action.wav */; };
+		C7DC50CE2417E18900EACAE8 /* eat01.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50C62417E18900EACAE8 /* eat01.wav */; };
+		C7DC50CF2417E18900EACAE8 /* eat03.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50C72417E18900EACAE8 /* eat03.wav */; };
+		C7DC50D02417E18900EACAE8 /* eat02.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50C82417E18900EACAE8 /* eat02.wav */; };
+		C7DC50D12417E18900EACAE8 /* death01.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50C92417E18900EACAE8 /* death01.wav */; };
+		C7DC50D22417E18900EACAE8 /* death02.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50CA2417E18900EACAE8 /* death02.wav */; };
+		C7DC50D32417E18900EACAE8 /* start-or-end01.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50CB2417E18900EACAE8 /* start-or-end01.wav */; };
+		C7DC50D42417E18900EACAE8 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = C7DC50CC2417E18900EACAE8 /* gameover.wav */; };
 		F94C65D723FBEDA000DFC831 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94C65D623FBEDA000DFC831 /* Model.swift */; };
 		F94C65D923FBF3AA00DFC831 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94C65D823FBF3AA00DFC831 /* Interface.swift */; };
 		F94C65DB23FBF40C00DFC831 /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94C65DA23FBF40C00DFC831 /* GameConfig.swift */; };
@@ -44,6 +52,14 @@
 		C7C666332408B51F0075FFC8 /* UserIDController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserIDController.swift; sourceTree = "<group>"; };
 		C7C666382408B5690075FFC8 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		C7C6663A2408B56A0075FFC8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C7DC50C52417E18900EACAE8 /* action.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = action.wav; sourceTree = "<group>"; };
+		C7DC50C62417E18900EACAE8 /* eat01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eat01.wav; sourceTree = "<group>"; };
+		C7DC50C72417E18900EACAE8 /* eat03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eat03.wav; sourceTree = "<group>"; };
+		C7DC50C82417E18900EACAE8 /* eat02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eat02.wav; sourceTree = "<group>"; };
+		C7DC50C92417E18900EACAE8 /* death01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death01.wav; sourceTree = "<group>"; };
+		C7DC50CA2417E18900EACAE8 /* death02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death02.wav; sourceTree = "<group>"; };
+		C7DC50CB2417E18900EACAE8 /* start-or-end01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "start-or-end01.wav"; sourceTree = "<group>"; };
+		C7DC50CC2417E18900EACAE8 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		F94C65D623FBEDA000DFC831 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F94C65D823FBF3AA00DFC831 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		F94C65DA23FBF40C00DFC831 /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
@@ -89,6 +105,21 @@
 				C7C666332408B51F0075FFC8 /* UserIDController.swift */,
 			);
 			path = Users;
+			sourceTree = "<group>";
+		};
+		C7DC50C42417E18900EACAE8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7DC50C52417E18900EACAE8 /* action.wav */,
+				C7DC50C62417E18900EACAE8 /* eat01.wav */,
+				C7DC50C72417E18900EACAE8 /* eat03.wav */,
+				C7DC50C82417E18900EACAE8 /* eat02.wav */,
+				C7DC50C92417E18900EACAE8 /* death01.wav */,
+				C7DC50CA2417E18900EACAE8 /* death02.wav */,
+				C7DC50CB2417E18900EACAE8 /* start-or-end01.wav */,
+				C7DC50CC2417E18900EACAE8 /* gameover.wav */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F94C65D423FBED7F00DFC831 /* Game */ = {
@@ -178,6 +209,7 @@
 		F99C24C623EAADE100DA8BC1 /* Snake */ = {
 			isa = PBXGroup;
 			children = (
+				C7DC50C42417E18900EACAE8 /* Resources */,
 				F94C65F123FC026D00DFC831 /* Source */,
 				F99C24D123EAADE400DA8BC1 /* Assets.xcassets */,
 				F99C24D323EAADE400DA8BC1 /* Main.storyboard */,
@@ -254,8 +286,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DC50D42417E18900EACAE8 /* gameover.wav in Resources */,
+				C7DC50CE2417E18900EACAE8 /* eat01.wav in Resources */,
 				F99C24D223EAADE400DA8BC1 /* Assets.xcassets in Resources */,
 				F99C24D523EAADE400DA8BC1 /* Main.storyboard in Resources */,
+				C7DC50D32417E18900EACAE8 /* start-or-end01.wav in Resources */,
+				C7DC50D12417E18900EACAE8 /* death01.wav in Resources */,
+				C7DC50CF2417E18900EACAE8 /* eat03.wav in Resources */,
+				C7DC50CD2417E18900EACAE8 /* action.wav in Resources */,
+				C7DC50D02417E18900EACAE8 /* eat02.wav in Resources */,
+				C7DC50D22417E18900EACAE8 /* death02.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

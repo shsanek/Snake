@@ -28,6 +28,8 @@ class TableViewController: NSView
     private let scoresStorage = ScoresStorage()
     private lazy var usersController = UsersTableController(storage: self.scoresStorage)
     private lazy var userIDController = UserIDController(validator: UserValidator(storage: self.scoresStorage))
+
+    private let player = AudioPlayer()
     
     public func configure()
     {
@@ -66,6 +68,7 @@ class TableViewController: NSView
     
     private func wrongUser()
     {
+        self.player.playSound(audioFile: .death01, repeatly: false)
         AlertController.showAlert(string: "Такая команда уже существует!")
     }
 
